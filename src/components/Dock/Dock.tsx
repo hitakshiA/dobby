@@ -4,50 +4,41 @@ import React, { useState } from 'react';
 import styles from './Dock.module.css';
 import { WidgetCenterIcon } from '../WidgetCenter';
 
-// --- High-Fidelity Icons ---
-const SketchIcon = () => (
-    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="24" height="24" rx="5" fill="white" />
-        <path d="M12 2.5L3 8.5L12 21.5L21 8.5L12 2.5Z" fill="url(#sketch-gradient)" stroke="#FDB300" strokeWidth="0.5" />
-        <path d="M3 8.5H21" stroke="#E68D00" strokeWidth="0.5" />
-        <path d="M7.5 8.5L12 3" stroke="#E68D00" strokeWidth="0.5" />
-        <path d="M16.5 8.5L12 3" stroke="#E68D00" strokeWidth="0.5" />
-        <path d="M7.5 8.5L12 21.5" stroke="#E68D00" strokeWidth="0.5" />
-        <path d="M16.5 8.5L12 21.5" stroke="#E68D00" strokeWidth="0.5" />
-        <defs>
-            <linearGradient id="sketch-gradient" x1="12" y1="2" x2="12" y2="22" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#FEE600" />
-                <stop offset="1" stopColor="#FD8900" />
-            </linearGradient>
-        </defs>
+// --- Minimalist Brutalist Icons (Monochrome Line Art) ---
+const HomeIcon = () => (
+    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+        <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
     </svg>
 );
 
-const AstroIcon = () => (
-    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="24" height="24" rx="5" fill="#0D071E" />
-        <path d="M16.5 4.5C16.5 4.5 13.5 8 13.5 10.5M7.5 4.5C7.5 4.5 10.5 8 10.5 10.5M12 2L12 22" stroke="url(#astro-beam)" strokeWidth="1" />
-        <circle cx="12" cy="12" r="5" fill="url(#astro-planet)" />
-        <path d="M8 20L12 15L16 20H8Z" fill="#FF5D01" />
-        <defs>
-            <linearGradient id="astro-planet" x1="12" y1="7" x2="12" y2="17" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#883AE8" />
-                <stop offset="1" stopColor="#480894" />
-            </linearGradient>
-            <linearGradient id="astro-beam" x1="12" y1="2" x2="12" y2="22" gradientUnits="userSpaceOnUse">
-                <stop stopColor="white" stopOpacity="0" />
-                <stop offset="0.5" stopColor="white" />
-                <stop offset="1" stopColor="white" stopOpacity="0" />
-            </linearGradient>
-        </defs>
+const GridIcon = () => (
+    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect width="7" height="7" x="3" y="3" rx="1" />
+        <rect width="7" height="7" x="14" y="3" rx="1" />
+        <rect width="7" height="7" x="14" y="14" rx="1" />
+        <rect width="7" height="7" x="3" y="14" rx="1" />
     </svg>
 );
 
-const PerplexityIcon = () => (
-    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="24" height="24" rx="5" fill="#102A30" />
-        <path d="M12 4L14 10H20L15.5 14L17.5 20L12 16L6.5 20L8.5 14L4 10H10L12 4Z" fill="#22B8CF" stroke="#1098AD" strokeWidth="1.5" strokeLinejoin="round" />
-        <path d="M12 16V20M12 4V10" stroke="#22B8CF" strokeOpacity="0.5" />
+const ChartIcon = () => (
+    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 3v18h18" />
+        <path d="m19 9-5 5-4-4-3 3" />
+    </svg>
+);
+
+const TerminalIcon = () => (
+    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="4 17 10 11 4 5" />
+        <line x1="12" x2="20" y1="19" y2="19" />
+    </svg>
+);
+
+const SettingsIcon = () => (
+    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+        <circle cx="12" cy="12" r="3" />
     </svg>
 );
 
@@ -59,10 +50,11 @@ export default function Dock({ onWidgetCenterClick }: DockProps) {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     const apps = [
-        { title: 'Sketch', icon: SketchIcon },
-        { title: 'Widget Center', icon: WidgetCenterIcon, onClick: onWidgetCenterClick },
-        { title: 'Astro', icon: AstroIcon },
-        { title: 'Perplexity', icon: PerplexityIcon },
+        { title: 'Home', icon: HomeIcon },
+        { title: 'Widgets', icon: GridIcon, onClick: onWidgetCenterClick },
+        { title: 'Analytics', icon: ChartIcon },
+        { title: 'Terminal', icon: TerminalIcon },
+        { title: 'Settings', icon: SettingsIcon },
     ];
 
     const getStyle = (index: number) => {
@@ -73,11 +65,9 @@ export default function Dock({ onWidgetCenterClick }: DockProps) {
         const distance = Math.abs(hoveredIndex - index);
 
         if (distance === 0) {
-            return { transform: 'scale(1.5) translateY(-10px)' };
+            return { transform: 'scale(1.4) translateY(-8px)' };
         } else if (distance === 1) {
-            return { transform: 'scale(1.2) translateY(-6px)' };
-        } else if (distance === 2) {
-            return { transform: 'scale(1.1) translateY(0px)' };
+            return { transform: 'scale(1.15) translateY(-4px)' };
         }
 
         return { transform: 'scale(1) translateY(0px)' };

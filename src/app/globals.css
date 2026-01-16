@@ -615,19 +615,22 @@ body {
 /* Drop placeholder - transparent white */
 .react-grid-placeholder {
   background: rgba(255, 255, 255, 0.2) !important;
-  border-radius: 24px !important;
+  border-radius: 20px !important;
   opacity: 1 !important;
-  border: 2px dashed rgba(255, 255, 255, 0.4) !important;
+  border: 2px dashed rgba(0, 255, 65, 0.6) !important;
 }
 
 /* Resize handles - bottom only */
 .react-resizable-handle {
-  opacity: 0;
+  opacity: 0.5;
+  /* Always partially visible */
   transition: opacity 0.2s ease;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  /* Larger touch target */
+  height: 30px;
   position: absolute;
   z-index: 100;
+  cursor: se-resize;
 }
 
 .react-grid-item:hover .react-resizable-handle {
@@ -642,28 +645,20 @@ body {
   cursor: s-resize;
 }
 
-/* Bottom corners */
+/* Bottom corners - inside the tile */
 .react-resizable-handle-se {
-  bottom: 4px;
-  right: 4px;
+  bottom: 8px;
+  right: 8px;
   cursor: se-resize;
 }
 
 .react-resizable-handle-sw {
-  bottom: 4px;
-  left: 4px;
+  bottom: 8px;
+  left: 8px;
   cursor: sw-resize;
 }
 
-/* Handle dot indicator */
+/* Handle dot indicator - REMOVED */
 .react-resizable-handle::after {
-  content: "";
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  bottom: 50%;
-  right: 50%;
-  transform: translate(50%, 50%);
+  display: none;
 }

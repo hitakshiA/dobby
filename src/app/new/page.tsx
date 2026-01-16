@@ -6,28 +6,89 @@ import Link from 'next/link';
 import Dock from '@/components/Dock/Dock';
 import { InteractiveGrid } from '@/components/Grid/InteractiveGrid';
 import { Tile } from '@/components/Grid/Tile';
-import {
-    CpuWidget,
-    ActivityWidget,
-    ClockWidget,
-    WeatherWidget,
-    BatteryWidget,
-    SystemStatsWidget,
-    CryptoWidget,
-    NotesWidget
-} from '@/components/Grid/Widgets';
+import { FearGreedWidget } from '@/components/widgets/FearGreedWidget';
+import { DexScreenerWidget } from '@/components/widgets/DexScreenerWidget';
+import { PolymarketWidget } from '@/components/widgets/PolymarketWidget';
+import { NewTokensWidget } from '@/components/widgets/NewTokensWidget';
+import { YieldsWidget } from '@/components/widgets/YieldsWidget';
+import { GasWidget } from '@/components/widgets/GasWidget';
+import { FundingWidget } from '@/components/widgets/FundingWidget';
+import { OpenInterestWidget } from '@/components/widgets/OpenInterestWidget';
+import { DepthWidget } from '@/components/widgets/DepthWidget';
+import { MempoolWidget } from '@/components/widgets/MempoolWidget';
+import { NewsWidget } from '@/components/widgets/NewsWidget';
+import { GlobalWidget } from '@/components/widgets/GlobalWidget';
+import { SolanaWidget } from '@/components/widgets/SolanaWidget';
+import { EthSupplyWidget } from '@/components/widgets/EthSupplyWidget';
+import { NftWidget } from '@/components/widgets/NftWidget';
+import { ThorchainWidget } from '@/components/widgets/ThorchainWidget';
+import { L2Widget } from '@/components/widgets/L2Widget';
+import { CardanoWidget } from '@/components/widgets/CardanoWidget';
+import { TrendingWidget } from '@/components/widgets/TrendingWidget';
+import { BaseGasWidget } from '@/components/widgets/BaseGasWidget';
+import { PegWidget } from '@/components/widgets/PegWidget';
+import { GainersWidget } from '@/components/widgets/GainersWidget';
+import { LosersWidget } from '@/components/widgets/LosersWidget';
+import { MarketTerminalWidget } from '@/components/widgets/MarketTerminalWidget';
+import { GovernanceWidget } from '@/components/widgets/GovernanceWidget';
+import { SecurityWidget } from '@/components/widgets/SecurityWidget';
+import { OsmosisWidget } from '@/components/widgets/OsmosisWidget';
+import { PumpFunWidget } from '@/components/widgets/PumpFunWidget';
+import { JupiterWidget } from '@/components/widgets/JupiterWidget';
+import { HeliusWidget } from '@/components/widgets/HeliusWidget';
+import { MagicEdenWidget } from '@/components/widgets/MagicEdenWidget';
+import { BirdeyeWidget } from '@/components/widgets/BirdeyeWidget';
+import { HacksWidget } from '@/components/widgets/HacksWidget';
+import { GoPlusWidget } from '@/components/widgets/GoPlusWidget';
+import { TokenUnlocksWidget } from '@/components/widgets/TokenUnlocksWidget';
+import { DominanceWidget } from '@/components/widgets/DominanceWidget';
+import { TreasuryWidget } from '@/components/widgets/TreasuryWidget';
+import { StablecoinWidget } from '@/components/widgets/StablecoinWidget';
+import { BlueChipWidget } from '@/components/widgets/BlueChipWidget';
 import { WidgetCenter, WIDGET_CATALOG } from '@/components/WidgetCenter';
 
 // Widget factory mapping IDs to components
 const WidgetFactory: Record<string, React.FC<{ width?: number; height?: number }>> = {
-    cpu: CpuWidget,
-    network: ActivityWidget,
-    clock: ClockWidget,
-    weather: WeatherWidget,
-    battery: BatteryWidget,
-    stats: SystemStatsWidget,
-    crypto: CryptoWidget,
-    notes: NotesWidget,
+    // Real Data Widgets
+    dominance: DominanceWidget,
+    treasury: TreasuryWidget,
+    stables: StablecoinWidget,
+    bluechips: BlueChipWidget,
+    hacks: HacksWidget,
+    goplus: GoPlusWidget,
+    unlocks: TokenUnlocksWidget,
+    jupiter: JupiterWidget,
+    helius: HeliusWidget,
+    magiceden: MagicEdenWidget,
+    birdeye: BirdeyeWidget,
+    osmosis: OsmosisWidget,
+    pumpfun: PumpFunWidget,
+    security: SecurityWidget,
+    governance: GovernanceWidget,
+    market_terminal: MarketTerminalWidget,
+    feargreed: FearGreedWidget,
+    dexscreener: DexScreenerWidget,
+    polymarket: PolymarketWidget,
+    newtokens: NewTokensWidget,
+    yields: YieldsWidget,
+    gas: GasWidget,
+    funding: FundingWidget,
+    oi: OpenInterestWidget,
+    depth: DepthWidget,
+    mempool: MempoolWidget,
+    news: NewsWidget,
+    global: GlobalWidget,
+    solana: SolanaWidget,
+    ethsupply: EthSupplyWidget,
+    nft: NftWidget,
+    thorchain: ThorchainWidget,
+    l2: L2Widget,
+    cardano: CardanoWidget,
+    trending: TrendingWidget,
+    basegas: BaseGasWidget,
+    peg: PegWidget,
+    gainers: GainersWidget,
+    losers: LosersWidget,
 };
 
 interface ActiveWidget {
@@ -39,11 +100,7 @@ interface ActiveWidget {
 
 export default function NewDashboard() {
     const [isWidgetCenterOpen, setIsWidgetCenterOpen] = useState(false);
-    const [activeWidgets, setActiveWidgets] = useState<ActiveWidget[]>([
-        { id: 'clock', instanceId: 'clock-1', x: 0, y: 0 },
-        { id: 'weather', instanceId: 'weather-1', x: 1, y: 0 },
-        { id: 'cpu', instanceId: 'cpu-1', x: 0, y: 2 },
-    ]);
+    const [activeWidgets, setActiveWidgets] = useState<ActiveWidget[]>([]); // Start empty per request
 
     const handleAddWidget = useCallback((widgetId: string) => {
         const instanceId = `${widgetId}-${Date.now()}`;
@@ -127,14 +184,19 @@ export default function NewDashboard() {
             {/* Empty State */}
             {activeWidgets.length === 0 && (
                 <div className={styles.emptyState}>
-                    <div className={styles.emptyIcon}>🧩</div>
-                    <h2>Your Dashboard is Empty</h2>
-                    <p>Click the <span className={styles.highlight}>Widget Center</span> icon in the dock to add widgets</p>
+                    <div className={styles.emptyGlitchWrapper}>
+                        <div className={styles.emptyGlitch}>INITIALIZE_GRID</div>
+                    </div>
+                    <div className={styles.emptyStatus}>
+                        <div className={styles.statusDot}></div>
+                        <span>SYSTEM READY</span>
+                    </div>
+                    <p className={styles.emptyDesc}>Awaiting Module Injection...</p>
                     <button
                         className={styles.emptyButton}
                         onClick={() => setIsWidgetCenterOpen(true)}
                     >
-                        Open Widget Center
+                        <span className={styles.cmdPrefix}>{">"}</span> ACCESS_WIDGET_CENTER
                     </button>
                 </div>
             )}

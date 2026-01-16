@@ -1,4 +1,4 @@
-/* --- Dock --- */
+/* --- Dock: Soft Brutalist Redesign --- */
 .dock-wrapper {
     position: fixed;
     bottom: 20px;
@@ -12,20 +12,18 @@
 }
 
 .dock-container {
-    padding: 5px 8px;
-    /* Reference: padding 3px, slight adjust */
-    width: auto;
-    height: 60px;
-    /* Reference fixed height */
+    padding: 10px 16px;
+    height: 68px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 16px;
-    background: rgba(83, 83, 83, 0.25);
-    backdrop-filter: blur(13px);
-    -webkit-backdrop-filter: blur(13px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-sizing: content-box;
+    gap: 12px;
+    /* More gap between icons */
+    /* Soft Black with border */
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
 }
 
 .dock-item {
@@ -33,60 +31,59 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
-    vertical-align: bottom;
+    width: 48px;
+    height: 48px;
     position: relative;
-
-    /* Reference Exact Transition Logic */
-    transition: 0.2s;
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
     transform-origin: 50% 100%;
-    margin: 0 8px;
-    /* Base spacing: Half Spacious (8px) */
     cursor: pointer;
+    border-radius: 12px;
 }
 
-/* Reference: Margin expands on hover */
 .dock-item:hover {
-    margin: 0px 13px;
-    /* Expanded spacing on hover (Half of 25px -> ~13px) */
+    transform: scale(1.2) translateY(-8px);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .name {
     position: absolute;
-    top: -45px;
-    /* Reference -70px, adjusted for layout */
-    background: rgba(0, 0, 0, 0.5);
-    color: rgba(255, 255, 255, 0.9);
-    padding: 4px 10px;
-    border-radius: 5px;
-    font-size: 12px;
+    top: -40px;
+    background: #0a0a0a;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-family: 'The Good Monolith', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.2s;
+    transition: all 0.2s ease;
     white-space: nowrap;
     pointer-events: none;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* Triangle */
+/* Neon accent on hover */
+.dock-item:hover .name {
+    visibility: visible;
+    opacity: 1;
+    border-color: #00ff41;
+}
+
+/* Triangle pointer */
 .name::after {
     content: "";
     position: absolute;
-    bottom: -5px;
+    bottom: -6px;
     left: 50%;
     transform: translateX(-50%);
     width: 0;
     height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid rgba(0, 0, 0, 0.5);
-}
-
-.dock-item:hover .name {
-    visibility: visible;
-    opacity: 1;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #0a0a0a;
 }
 
 .dock-icon {
@@ -95,8 +92,30 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.2s ease;
-    /* Ensure transform animates */
+    transition: all 0.2s ease;
     transform-origin: 50% 100%;
-    /* Grow from bottom */
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.dock-item:hover .dock-icon {
+    color: #00ff41;
+}
+
+/* Active indicator dot */
+.dock-item::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: #00ff41;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.dock-item:hover::after {
+    opacity: 1;
 }

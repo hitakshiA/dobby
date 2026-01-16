@@ -4,15 +4,38 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 // ============================================
-// APPLE-QUALITY WIDGETS WITH LOD (Level of Detail)
+// SOFT BRUTALIST DESIGN SYSTEM
+// Uses INLINE STYLES only (no Tailwind)
 // ============================================
 
-// Helper to determine size category
+const THEME = {
+    fontSans: '"PP Neue Montreal", sans-serif',
+    fontMono: '"The Good Monolith", monospace',
+    neon: '#00ff41',
+    bg: 'transparent',
+    text: '#fff',
+    textDim: 'rgba(255,255,255,0.5)'
+};
+
+// Helper: Size Category
 const getSize = (w: number, h: number): 'small' | 'medium' | 'large' => {
     const area = w * h;
-    if (area >= 60000) return 'large';
-    if (area >= 30000) return 'medium';
+    if (area >= 50000) return 'large';
+    if (area >= 25000) return 'medium';
     return 'small';
+};
+
+// Base styles reused
+const baseStyle: React.CSSProperties = {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    fontFamily: THEME.fontMono,
+    color: THEME.text,
+    padding: '16px',
+    boxSizing: 'border-box',
+    overflow: 'hidden'
 };
 
 // ==================== CLOCK WIDGET ====================
@@ -25,142 +48,48 @@ export function ClockWidget({ width = 200, height = 200 }: { width?: number; hei
         return () => clearInterval(timer);
     }, []);
 
-    const hours = time.getHours();
-    const minutes = time.getMinutes();
-    const seconds = time.getSeconds();
-    const period = hours >= 12 ? 'PM' : 'AM';
-    const displayHours = hours % 12 || 12;
-    const date = time.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+    const hours = time.getHours().toString().padStart(2, '0');
+    const minutes = time.getMinutes().toString().padStart(2, '0');
+    const seconds = time.getSeconds().toString().padStart(2, '0');
+    const date = time.toLocaleDateString('en-US', { weekday: 'short', day: 'numeric', month: 'short' }).toUpperCase();
 
-    // Small: Just time
+    // SMALL
     if (size === 'small') {
         return (
-            <div style={{
-                width: '100%', height: '100%',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%)'
-            }}>
-                <span style={{ fontSize: '28px', fontWeight: '300', color: '#fff', fontFamily: 'system-ui' }}>
-                    {displayHours}:{minutes.toString().padStart(2, '0')}
-                </span>
+            <div style={{ ...baseStyle, justifyContent: 'space-between', alignItems: 'center', textAlign: 'center' }}>
+                <div style={{ fontSize: '10px', color: THEME.textDim }}>TIME</div>
+                <div style={{ fontSize: '36px', fontWeight: 'bold', lineHeight: 1 }}>{hours}:{minutes}</div>
+                <div style={{ fontSize: '10px', color: THEME.neon }}>{date}</div>
             </div>
         );
     }
 
-    // Medium: Time + AM/PM + Date
+    // MEDIUM
     if (size === 'medium') {
         return (
-            <div style={{
-                width: '100%', height: '100%',
-                display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                gap: '8px',
-                background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%)'
-            }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
-                    <span style={{ fontSize: '48px', fontWeight: '200', color: '#fff', fontFamily: 'system-ui' }}>
-                        {displayHours}:{minutes.toString().padStart(2, '0')}
-                    </span>
-                    <span style={{ fontSize: '18px', color: 'rgba(255,255,255,0.5)', fontWeight: '400' }}>{period}</span>
+            <div style={{ ...baseStyle, justifyContent: 'center', gap: '8px' }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+                    <span style={{ fontSize: '52px', fontWeight: 'bold', lineHeight: 1 }}>{hours}:{minutes}</span>
+                    <span style={{ fontSize: '20px', color: THEME.neon }}>:{seconds}</span>
                 </div>
-                <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.4)', fontWeight: '400' }}>{date}</span>
+                <div style={{ fontSize: '12px', color: THEME.textDim, borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '8px', marginTop: '4px' }}>{date}</div>
             </div>
         );
     }
 
-    // Large: Analog-style with digital backup
+    // LARGE
     return (
-        <div style={{
-            width: '100%', height: '100%',
-            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-            gap: '12px',
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%)'
-        }}>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
-                <span style={{ fontSize: '72px', fontWeight: '100', color: '#fff', fontFamily: 'system-ui', letterSpacing: '-2px' }}>
-                    {displayHours}:{minutes.toString().padStart(2, '0')}
-                </span>
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <span style={{ fontSize: '24px', color: 'rgba(255,255,255,0.6)', fontWeight: '300' }}>:{seconds.toString().padStart(2, '0')}</span>
-                    <span style={{ fontSize: '16px', color: 'rgba(255,255,255,0.4)', fontWeight: '500' }}>{period}</span>
-                </div>
+        <div style={{ ...baseStyle, justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ fontSize: '10px', color: THEME.neon, border: `1px solid ${THEME.neon}`, padding: '2px 8px', borderRadius: '12px' }}>SYSTEM</span>
+                <span style={{ fontSize: '10px', color: THEME.textDim }}>LOCAL</span>
             </div>
-            <span style={{ fontSize: '16px', color: 'rgba(255,255,255,0.4)', fontWeight: '400' }}>{date}</span>
-        </div>
-    );
-}
-
-// ==================== WEATHER WIDGET ====================
-export function WeatherWidget({ width = 200, height = 200 }: { width?: number; height?: number }) {
-    const size = getSize(width, height);
-
-    const conditions = { temp: 72, high: 78, low: 64, condition: 'Sunny', location: 'San Francisco' };
-    const forecast = [
-        { day: 'Mon', temp: 72, icon: '☀️' },
-        { day: 'Tue', temp: 68, icon: '⛅' },
-        { day: 'Wed', temp: 65, icon: '🌧️' },
-        { day: 'Thu', temp: 70, icon: '☀️' },
-        { day: 'Fri', temp: 75, icon: '☀️' },
-    ];
-
-    // Small: Just icon and temp
-    if (size === 'small') {
-        return (
-            <div style={{
-                width: '100%', height: '100%',
-                display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                gap: '4px',
-                background: 'linear-gradient(180deg, rgba(135,206,235,0.15) 0%, rgba(255,165,0,0.1) 100%)'
-            }}>
-                <span style={{ fontSize: '36px' }}>☀️</span>
-                <span style={{ fontSize: '24px', fontWeight: '300', color: '#fff' }}>{conditions.temp}°</span>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 1 }}>
+                <span style={{ fontSize: '72px', fontWeight: 'bold', lineHeight: 1, textShadow: '0 0 20px rgba(0,255,65,0.3)' }}>{hours}:{minutes}</span>
             </div>
-        );
-    }
-
-    // Medium: Icon, temp, hi/lo, location
-    if (size === 'medium') {
-        return (
-            <div style={{
-                width: '100%', height: '100%',
-                display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                gap: '8px',
-                background: 'linear-gradient(180deg, rgba(135,206,235,0.15) 0%, rgba(255,165,0,0.1) 100%)'
-            }}>
-                <span style={{ fontSize: '48px' }}>☀️</span>
-                <span style={{ fontSize: '42px', fontWeight: '200', color: '#fff' }}>{conditions.temp}°</span>
-                <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)' }}>{conditions.location}</span>
-                <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)' }}>H:{conditions.high}° L:{conditions.low}°</span>
-            </div>
-        );
-    }
-
-    // Large: Full forecast
-    return (
-        <div style={{
-            width: '100%', height: '100%',
-            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-            padding: '16px', gap: '12px',
-            background: 'linear-gradient(180deg, rgba(135,206,235,0.15) 0%, rgba(255,165,0,0.1) 100%)'
-        }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <span style={{ fontSize: '56px' }}>☀️</span>
-                <div>
-                    <span style={{ fontSize: '52px', fontWeight: '200', color: '#fff' }}>{conditions.temp}°</span>
-                    <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)' }}>{conditions.condition}</div>
-                </div>
-            </div>
-            <div style={{ fontSize: '14px', color: 'rgba(255,255,255,0.5)' }}>{conditions.location}</div>
-            <div style={{
-                display: 'flex', gap: '16px', marginTop: '8px',
-                padding: '12px 16px', background: 'rgba(0,0,0,0.2)', borderRadius: '12px'
-            }}>
-                {forecast.map((f, i) => (
-                    <div key={i} style={{ textAlign: 'center' }}>
-                        <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.5)', marginBottom: '4px' }}>{f.day}</div>
-                        <div style={{ fontSize: '20px', marginBottom: '4px' }}>{f.icon}</div>
-                        <div style={{ fontSize: '14px', color: '#fff', fontWeight: '500' }}>{f.temp}°</div>
-                    </div>
-                ))}
+            <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '12px' }}>
+                <div><div style={{ fontSize: '10px', color: THEME.textDim }}>DATE</div><div style={{ fontSize: '14px' }}>{date}</div></div>
+                <div style={{ textAlign: 'right' }}><div style={{ fontSize: '10px', color: THEME.textDim }}>SEC</div><div style={{ fontSize: '20px' }}>{seconds}</div></div>
             </div>
         </div>
     );
@@ -173,115 +102,53 @@ export function CpuWidget({ width = 200, height = 200 }: { width?: number; heigh
 
     useEffect(() => {
         const timer = setInterval(() => {
-            setUsage(prev => Math.max(10, Math.min(95, prev + (Math.random() - 0.5) * 20)));
-        }, 1500);
+            setUsage(prev => Math.max(10, Math.min(95, prev + (Math.random() - 0.5) * 15)));
+        }, 800);
         return () => clearInterval(timer);
     }, []);
 
-    const getColor = (val: number) => {
-        if (val < 50) return '#4ade80';
-        if (val < 80) return '#fbbf24';
-        return '#ef4444';
-    };
-
-    // Small: Just percentage ring
+    // SMALL: Radial Gauge
     if (size === 'small') {
-        const circumference = 2 * Math.PI * 40;
+        const circumference = 2 * Math.PI * 28;
         const offset = circumference - (usage / 100) * circumference;
-
         return (
-            <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <svg width="80" height="80" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="8" />
-                    <motion.circle
-                        cx="50" cy="50" r="40" fill="none"
-                        stroke={getColor(usage)} strokeWidth="8" strokeLinecap="round"
+            <div style={{ ...baseStyle, alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+                <svg width="70" height="70" viewBox="0 0 64 64" style={{ transform: 'rotate(-90deg)' }}>
+                    <circle cx="32" cy="32" r="28" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="4" />
+                    <circle
+                        cx="32" cy="32" r="28" fill="none"
+                        stroke={usage > 80 ? '#ef4444' : THEME.neon}
+                        strokeWidth="4"
                         strokeDasharray={circumference}
-                        animate={{ strokeDashoffset: offset }}
-                        style={{ transform: 'rotate(-90deg)', transformOrigin: '50% 50%' }}
+                        strokeDashoffset={offset}
+                        strokeLinecap="round"
+                        style={{ transition: 'stroke-dashoffset 0.5s ease-out' }}
                     />
-                    <text x="50" y="55" textAnchor="middle" fill="#fff" fontSize="20" fontWeight="300">
-                        {Math.round(usage)}%
-                    </text>
                 </svg>
+                <div style={{ position: 'absolute', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <span style={{ fontSize: '18px', fontWeight: 'bold' }}>{Math.round(usage)}%</span>
+                    <span style={{ fontSize: '8px', color: THEME.textDim }}>CPU</span>
+                </div>
             </div>
         );
     }
 
-    // Medium/Large: Multiple cores
-    const coreCount = size === 'large' ? 8 : 4;
-    const [cores] = useState(() => Array(coreCount).fill(0).map(() => Math.random() * 100));
-
+    // MEDIUM/LARGE: Histogram
+    const bars = size === 'large' ? 24 : 14;
     return (
-        <div style={{
-            width: '100%', height: '100%', padding: '12px',
-            display: 'flex', flexDirection: 'column', gap: '8px'
-        }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: '28px', fontWeight: '200', color: '#fff' }}>{Math.round(usage)}%</span>
-                <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)' }}>CPU</span>
+        <div style={{ ...baseStyle }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                <span style={{ fontSize: '12px', fontWeight: 'bold' }}>SYSTEM</span>
+                <span style={{ fontSize: '14px', fontWeight: 'bold', color: usage > 80 ? '#ef4444' : THEME.neon }}>{Math.round(usage)}%</span>
             </div>
-            <div style={{ flex: 1, display: 'grid', gridTemplateColumns: `repeat(${Math.sqrt(coreCount)}, 1fr)`, gap: '4px' }}>
-                {cores.map((core, i) => (
+            <div style={{ flex: 1, display: 'flex', alignItems: 'flex-end', gap: '3px' }}>
+                {Array.from({ length: bars }).map((_, i) => (
                     <motion.div
                         key={i}
-                        style={{
-                            borderRadius: '4px',
-                            background: `linear-gradient(180deg, ${getColor(core)} 0%, rgba(255,255,255,0.05) 100%)`,
-                        }}
-                        animate={{ opacity: [0.6, 1, 0.6] }}
-                        transition={{ duration: 2, repeat: Infinity, delay: i * 0.1 }}
+                        style={{ flex: 1, background: i >= bars - 3 ? THEME.neon : 'rgba(255,255,255,0.15)', borderRadius: '2px 2px 0 0' }}
+                        animate={{ height: `${Math.min(100, Math.random() * usage + 10)}%` }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                     />
-                ))}
-            </div>
-        </div>
-    );
-}
-
-// ==================== NETWORK WIDGET ====================
-export function ActivityWidget({ width = 200, height = 200 }: { width?: number; height?: number }) {
-    const [data, setData] = useState<{ up: number; down: number }[]>([]);
-    const size = getSize(width, height);
-
-    useEffect(() => {
-        const points = size === 'large' ? 30 : 15;
-        setData(Array(points).fill(0).map(() => ({ up: Math.random() * 50, down: Math.random() * 80 })));
-
-        const timer = setInterval(() => {
-            setData(prev => [...prev.slice(1), { up: Math.random() * 50, down: Math.random() * 80 }]);
-        }, 500);
-        return () => clearInterval(timer);
-    }, [size]);
-
-    const currentUp = data[data.length - 1]?.up || 0;
-    const currentDown = data[data.length - 1]?.down || 0;
-
-    return (
-        <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', padding: '12px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                <div>
-                    <span style={{ fontSize: '10px', color: '#4ade80' }}>↑</span>
-                    <span style={{ fontSize: '14px', color: '#fff', marginLeft: '4px' }}>{currentUp.toFixed(1)}</span>
-                    <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.4)', marginLeft: '2px' }}>MB/s</span>
-                </div>
-                <div>
-                    <span style={{ fontSize: '10px', color: '#60a5fa' }}>↓</span>
-                    <span style={{ fontSize: '14px', color: '#fff', marginLeft: '4px' }}>{currentDown.toFixed(1)}</span>
-                    <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.4)', marginLeft: '2px' }}>MB/s</span>
-                </div>
-            </div>
-            <div style={{ flex: 1, display: 'flex', alignItems: 'flex-end', gap: '2px' }}>
-                {data.map((d, i) => (
-                    <div key={i} style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '1px', height: '100%', justifyContent: 'flex-end' }}>
-                        <motion.div
-                            style={{ background: '#4ade80', borderRadius: '1px', minHeight: '2px' }}
-                            animate={{ height: `${(d.up / 100) * 100}%` }}
-                        />
-                        <motion.div
-                            style={{ background: '#60a5fa', borderRadius: '1px', minHeight: '2px' }}
-                            animate={{ height: `${(d.down / 100) * 100}%` }}
-                        />
-                    </div>
                 ))}
             </div>
         </div>
@@ -291,44 +158,23 @@ export function ActivityWidget({ width = 200, height = 200 }: { width?: number; 
 // ==================== CRYPTO WIDGET ====================
 export function CryptoWidget({ width = 200, height = 200 }: { width?: number; height?: number }) {
     const size = getSize(width, height);
-    const [prices, setPrices] = useState([
-        { symbol: 'BTC', name: 'Bitcoin', price: 43250, change: 2.5, color: '#f7931a' },
-        { symbol: 'ETH', name: 'Ethereum', price: 2280, change: -1.2, color: '#627eea' },
-        { symbol: 'SOL', name: 'Solana', price: 98.5, change: 5.8, color: '#00ffa3' },
-    ]);
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setPrices(prev => prev.map(p => ({
-                ...p,
-                price: p.price * (1 + (Math.random() - 0.5) * 0.005),
-                change: p.change + (Math.random() - 0.5) * 0.3
-            })));
-        }, 2000);
-        return () => clearInterval(timer);
-    }, []);
-
-    const displayCount = size === 'small' ? 1 : 3;
+    const coins = [
+        { sym: 'BTC', price: '95,432', change: '+2.4%' },
+        { sym: 'ETH', price: '3,302', change: '-1.1%' },
+        { sym: 'SOL', price: '142.5', change: '+5.7%' },
+        { sym: 'BONK', price: '0.00002', change: '+12%' }
+    ];
+    const count = size === 'small' ? 2 : size === 'medium' ? 3 : 4;
 
     return (
-        <div style={{ width: '100%', height: '100%', padding: '12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            {prices.slice(0, displayCount).map((coin, i) => (
-                <div key={i} style={{
-                    display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                    padding: '8px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px',
-                    borderLeft: `3px solid ${coin.color}`
-                }}>
-                    <div>
-                        <div style={{ fontSize: '14px', fontWeight: '600', color: '#fff' }}>{coin.symbol}</div>
-                        {size !== 'small' && <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.4)' }}>{coin.name}</div>}
-                    </div>
+        <div style={{ ...baseStyle, gap: '8px' }}>
+            <div style={{ fontSize: '10px', color: THEME.textDim }}>MARKETS</div>
+            {coins.slice(0, count).map((c, i) => (
+                <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '6px' }}>
+                    <span style={{ fontWeight: 'bold', fontSize: '14px' }}>{c.sym}</span>
                     <div style={{ textAlign: 'right' }}>
-                        <div style={{ fontSize: '14px', color: '#fff' }}>
-                            ${coin.price.toLocaleString(undefined, { maximumFractionDigits: 0 })}
-                        </div>
-                        <div style={{ fontSize: '11px', color: coin.change >= 0 ? '#4ade80' : '#ef4444' }}>
-                            {coin.change >= 0 ? '+' : ''}{coin.change.toFixed(2)}%
-                        </div>
+                        <div style={{ fontSize: '12px' }}>${c.price}</div>
+                        <div style={{ fontSize: '10px', color: c.change.startsWith('+') ? THEME.neon : '#ef4444' }}>{c.change}</div>
                     </div>
                 </div>
             ))}
@@ -336,102 +182,70 @@ export function CryptoWidget({ width = 200, height = 200 }: { width?: number; he
     );
 }
 
-// ==================== BATTERY WIDGET ====================
-export function BatteryWidget({ width = 200, height = 200 }: { width?: number; height?: number }) {
-    const [battery, setBattery] = useState({ level: 0.85, charging: true });
+// ==================== WEATHER WIDGET ====================
+export function WeatherWidget({ width = 200, height = 200 }: { width?: number; height?: number }) {
+    const size = getSize(width, height);
 
-    useEffect(() => {
-        if ('getBattery' in navigator) {
-            (navigator as any).getBattery().then((bat: any) => {
-                setBattery({ level: bat.level, charging: bat.charging });
-            });
-        }
-    }, []);
-
-    const percentage = Math.round(battery.level * 100);
-    const color = percentage > 50 ? '#4ade80' : percentage > 20 ? '#fbbf24' : '#ef4444';
-
-    return (
-        <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-            <div style={{ position: 'relative', width: '64px', height: '32px', border: '2px solid rgba(255,255,255,0.3)', borderRadius: '4px' }}>
-                <div style={{ position: 'absolute', right: '-6px', top: '8px', width: '4px', height: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '0 2px 2px 0' }} />
-                <motion.div
-                    style={{ height: '100%', background: color, borderRadius: '2px' }}
-                    animate={{ width: `${percentage}%` }}
-                />
+    // SMALL
+    if (size === 'small') {
+        return (
+            <div style={{ ...baseStyle, alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                <div style={{ fontSize: '28px' }}>☀️</div>
+                <div style={{ fontSize: '28px', fontWeight: 'bold' }}>72°</div>
+                <div style={{ fontSize: '10px', color: THEME.textDim }}>SAN FRANCISCO</div>
             </div>
-            <span style={{ fontSize: '20px', fontWeight: '300', color: '#fff' }}>
-                {percentage}%{battery.charging && ' ⚡'}
-            </span>
-        </div>
-    );
-}
+        );
+    }
 
-// ==================== SYSTEM STATS WIDGET ====================
-export function SystemStatsWidget({ width = 200, height = 200 }: { width?: number; height?: number }) {
-    const [stats] = useState({ cpu: 45, memory: 62, disk: 78 });
-
+    // MEDIUM/LARGE
     return (
-        <div style={{ width: '100%', height: '100%', padding: '12px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            {[
-                { label: 'CPU', value: stats.cpu, color: '#60a5fa' },
-                { label: 'Memory', value: stats.memory, color: '#a78bfa' },
-                { label: 'Disk', value: stats.disk, color: '#4ade80' },
-            ].map((stat, i) => (
-                <div key={i}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-                        <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.6)' }}>{stat.label}</span>
-                        <span style={{ fontSize: '12px', color: '#fff' }}>{stat.value}%</span>
-                    </div>
-                    <div style={{ height: '4px', background: 'rgba(255,255,255,0.1)', borderRadius: '2px' }}>
-                        <motion.div
-                            style={{ height: '100%', background: stat.color, borderRadius: '2px' }}
-                            animate={{ width: `${stat.value}%` }}
-                        />
-                    </div>
+        <div style={{ ...baseStyle, justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                <div>
+                    <div style={{ fontSize: '10px', color: THEME.neon }}>CLEAR</div>
+                    <div style={{ fontSize: '10px', color: THEME.textDim }}>SAN FRANCISCO</div>
                 </div>
-            ))}
-        </div>
-    );
-}
-
-// ==================== NOTES WIDGET ====================
-export function NotesWidget({ width = 200, height = 200 }: { width?: number; height?: number }) {
-    const [notes, setNotes] = useState('');
-    const [isEditing, setIsEditing] = useState(false);
-
-    return (
-        <div style={{
-            width: '100%', height: '100%', padding: '12px',
-            background: 'linear-gradient(135deg, rgba(255,235,59,0.1) 0%, rgba(255,193,7,0.05) 100%)'
-        }}>
-            {isEditing ? (
-                <textarea
-                    value={notes}
-                    onChange={(e) => setNotes(e.target.value)}
-                    onBlur={() => setIsEditing(false)}
-                    placeholder="Type your notes..."
-                    autoFocus
-                    style={{
-                        width: '100%', height: '100%',
-                        background: 'transparent', border: 'none',
-                        color: '#fff', fontSize: '14px', resize: 'none', outline: 'none',
-                        fontFamily: 'inherit', lineHeight: '1.5'
-                    }}
-                />
-            ) : (
-                <div
-                    onClick={() => setIsEditing(true)}
-                    style={{
-                        width: '100%', height: '100%',
-                        color: notes ? '#fff' : 'rgba(255,255,255,0.3)',
-                        fontSize: '14px', cursor: 'text',
-                        whiteSpace: 'pre-wrap', lineHeight: '1.5'
-                    }}
-                >
-                    {notes || 'Click to add notes...'}
+                <div style={{ fontSize: '36px', fontWeight: 'bold' }}>72°</div>
+            </div>
+            {size === 'large' && (
+                <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '12px', marginTop: '12px' }}>
+                    {['MON', 'TUE', 'WED', 'THU'].map((day, i) => (
+                        <div key={i} style={{ textAlign: 'center' }}>
+                            <div style={{ fontSize: '9px', color: THEME.textDim }}>{day}</div>
+                            <div style={{ fontSize: '16px', margin: '4px 0' }}>☁️</div>
+                            <div style={{ fontSize: '12px' }}>{70 + i}°</div>
+                        </div>
+                    ))}
                 </div>
             )}
         </div>
     );
 }
+
+// ==================== NOTES WIDGET ====================
+export function NotesWidget() {
+    return (
+        <div style={{ ...baseStyle }}>
+            <div style={{ fontSize: '10px', color: THEME.textDim, marginBottom: '8px' }}>&gt; SCRATCHPAD</div>
+            <textarea
+                style={{
+                    flex: 1,
+                    background: 'transparent',
+                    border: 'none',
+                    outline: 'none',
+                    resize: 'none',
+                    color: THEME.text,
+                    fontFamily: THEME.fontMono,
+                    fontSize: '12px',
+                    lineHeight: '1.6'
+                }}
+                placeholder="// Type anything..."
+            />
+        </div>
+    );
+}
+
+// Compatibility Exports
+export function SystemStatsWidget() { return <CpuWidget />; }
+export function ActivityWidget() { return <CpuWidget />; }
+export function BatteryWidget() { return <CpuWidget />; } 
