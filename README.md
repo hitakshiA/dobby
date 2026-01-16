@@ -1,4 +1,4 @@
-# 🧦 DOBBY - Your Free Crypto Intelligence Co-Pilot
+#  DOBBY - Your Free Crypto Intelligence Co-Pilot
 
 > *"Notion meets Bloomberg Terminal meets ChatGPT — but for crypto, and free"*
 
