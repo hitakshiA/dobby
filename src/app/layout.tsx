@@ -1,0 +1,22 @@
+import type { Metadata } from 'next';
+import './globals.css';
+
+export const metadata: Metadata = {
+  title: 'Dobby - Crypto Intelligence Dashboard',
+  description: 'Modular, real-time crypto intelligence dashboard.',
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>
+        <div className="scanlines"></div>
+        {children}
+      </body>
+    </html>
+  );
+}

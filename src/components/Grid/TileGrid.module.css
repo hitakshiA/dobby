@@ -1,0 +1,96 @@
+.grid-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 2rem;
+    /* Safety padding */
+    padding-bottom: 120px;
+    /* Avoid Dock */
+    padding-right: 120px;
+    /* Avoid Home Button properly */
+    padding-top: 80px;
+    /* Slight top buffer */
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    /* Adaptive Columns */
+    grid-auto-rows: 160px;
+    /* Squared Rows */
+    gap: 20px;
+    z-index: 10;
+    /* Behind Dock/Home */
+    pointer-events: none;
+    /* Let clicks pass through gaps */
+}
+
+/* Enable clicks on tiles themselves */
+.grid-container>* {
+    pointer-events: auto;
+}
+
+.tile {
+    background: rgba(83, 83, 83, 0.35);
+    backdrop-filter: blur(60px);
+    -webkit-backdrop-filter: blur(60px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.tile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.tile-header {
+    padding: 12px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-button {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+.tile:hover .delete-button {
+    opacity: 1;
+}
+
+.delete-button:hover {
+    background: rgba(239, 68, 68, 0.8);
+    color: #fff;
+}
+
+.tile-content {
+    flex: 1;
+    position: relative;
+    padding: 0 16px 16px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

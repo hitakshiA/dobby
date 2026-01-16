@@ -1,0 +1,210 @@
+.container {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    font-family: 'SF Pro Text', 'SF Pro Icons', 'AOS Icons', 'Helvetica Neue', Helvetica, Arial, sans-serif, system-ui;
+    background: #000;
+    /* Defaulting to dark for Dobby theme */
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Visual feedback when dragging widget from Widget Center */
+.draggingOver {
+    outline: 3px dashed rgba(167, 139, 250, 0.6);
+    outline-offset: -3px;
+}
+
+.draggingOver::after {
+    content: 'Drop widget here';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 16px 32px;
+    background: rgba(167, 139, 250, 0.2);
+    border: 2px solid rgba(167, 139, 250, 0.5);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.background {
+    --size: 45px;
+    --line: rgba(255, 255, 255, 0.2);
+    /* Adapted color-mix */
+    content: '';
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background: linear-gradient(90deg,
+            var(--line) 1px,
+            transparent 1px var(--size)) calc(var(--size) * 0.36) 50% / var(--size) var(--size),
+        linear-gradient(var(--line) 1px, transparent 1px var(--size)) 0% calc(var(--size) * 0.32) / var(--size) var(--size);
+    mask: linear-gradient(-20deg, transparent 50%, white);
+    top: 0;
+    left: 0;
+    transform-style: flat;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+}
+
+.nav {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #fff;
+    --offset: 1;
+    --color: #fff;
+}
+
+.ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.li {
+    display: inline-grid;
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+}
+
+.a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    overflow: hidden;
+    line-height: 0.9;
+    outline-offset: 4px;
+    position: relative;
+}
+
+.a span:not(:empty) {
+    display: inline-block;
+    transition: transform 0.2s ease-out;
+    text-shadow: 0 calc(var(--offset) * -1lh) var(--color), 0 calc(var(--offset) * 1lh) rgba(255, 255, 255, 0.2);
+}
+
+.a:hover span:not(:empty) {
+    transform: translateY(calc(var(--offset) * 1lh));
+}
+
+.director {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(65deg, #0000 0 4px, #a855f7 4px 5px), rgba(168, 85, 247, 0.4);
+    z-index: 30;
+    clip-path: inset(50% 0 0 0);
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+}
+
+.a:hover .director {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+}
+
+.glassy-button {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    /* Top Right */
+    z-index: 100;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    /* White Icon */
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.glassy-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow:
+        0 8px 15px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.glassy-button svg {
+    width: 22px;
+    height: 22px;
+    opacity: 1;
+    transition: opacity 0.2s;
+    stroke: currentColor;
+}
+
+/* Empty State */
+.emptyState {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 5;
+    pointer-events: all;
+}
+
+.emptyIcon {
+    font-size: 64px;
+    margin-bottom: 16px;
+}
+
+.emptyState h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 12px 0;
+}
+
+.emptyState p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0 0 24px 0;
+}
+
+.highlight {
+    color: #a78bfa;
+    font-weight: 600;
+}
+
+.emptyButton {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.emptyButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}

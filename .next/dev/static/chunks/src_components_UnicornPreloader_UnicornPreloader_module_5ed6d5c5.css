@@ -1,0 +1,21 @@
+/* [project]/src/components/UnicornPreloader/UnicornPreloader.module.css [app-client] (css) */
+.UnicornPreloader-module__J7CzNG__container {
+  z-index: 9999;
+  background-color: #000;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.UnicornPreloader-module__J7CzNG__container > div {
+  transform-origin: center;
+  transform: scale(1.25);
+}
+
+/*# sourceMappingURL=src_components_UnicornPreloader_UnicornPreloader_module_5ed6d5c5.css.map*/

@@ -1,0 +1,138 @@
+/* [project]/src/components/Grid/InteractiveGrid.module.css [app-client] (css) */
+.InteractiveGrid-module__DgSReW__grid-container {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+  padding: 1rem 80px 100px 1rem;
+  position: relative;
+}
+
+.InteractiveGrid-module__DgSReW__react-grid-placeholder {
+  opacity: 1 !important;
+  background: #ffffff1a !important;
+  border: 3px dashed #ffffff80 !important;
+  border-radius: 24px !important;
+  transition: none !important;
+  box-shadow: 0 0 20px #fff3 !important;
+}
+
+.InteractiveGrid-module__DgSReW__react-resizable-handle {
+  cursor: se-resize;
+  z-index: 100;
+  opacity: 0;
+  width: 20px;
+  height: 20px;
+  transition: opacity .2s;
+  position: absolute;
+}
+
+.InteractiveGrid-module__DgSReW__tile:hover .InteractiveGrid-module__DgSReW__react-resizable-handle, .InteractiveGrid-module__DgSReW__react-grid-item:hover .InteractiveGrid-module__DgSReW__react-resizable-handle {
+  opacity: 1;
+}
+
+.InteractiveGrid-module__DgSReW__react-resizable-handle-se {
+  cursor: se-resize;
+  bottom: 0;
+  right: 0;
+}
+
+.InteractiveGrid-module__DgSReW__react-resizable-handle-sw {
+  cursor: sw-resize;
+  bottom: 0;
+  left: 0;
+}
+
+.InteractiveGrid-module__DgSReW__react-resizable-handle-ne {
+  cursor: ne-resize;
+  top: 0;
+  right: 0;
+}
+
+.InteractiveGrid-module__DgSReW__react-resizable-handle-nw {
+  cursor: nw-resize;
+  top: 0;
+  left: 0;
+}
+
+.InteractiveGrid-module__DgSReW__react-resizable-handle-e {
+  cursor: e-resize;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.InteractiveGrid-module__DgSReW__react-resizable-handle-w {
+  cursor: w-resize;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.InteractiveGrid-module__DgSReW__react-resizable-handle-n {
+  cursor: n-resize;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.InteractiveGrid-module__DgSReW__react-resizable-handle-s {
+  cursor: s-resize;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.InteractiveGrid-module__DgSReW__react-resizable-handle:after {
+  content: "";
+  background: #ffffff4d;
+  border-radius: 2px;
+  width: 8px;
+  height: 8px;
+  position: absolute;
+}
+
+.InteractiveGrid-module__DgSReW__react-resizable-handle-se:after {
+  bottom: 4px;
+  right: 4px;
+}
+
+.InteractiveGrid-module__DgSReW__react-resizable-handle-sw:after {
+  bottom: 4px;
+  left: 4px;
+}
+
+.InteractiveGrid-module__DgSReW__react-resizable-handle-ne:after {
+  top: 4px;
+  right: 4px;
+}
+
+.InteractiveGrid-module__DgSReW__react-resizable-handle-nw:after {
+  top: 4px;
+  left: 4px;
+}
+
+.InteractiveGrid-module__DgSReW__react-resizable-handle-e:after {
+  top: 50%;
+  right: 4px;
+  transform: translateY(-50%);
+}
+
+.InteractiveGrid-module__DgSReW__react-resizable-handle-w:after {
+  top: 50%;
+  left: 4px;
+  transform: translateY(-50%);
+}
+
+.InteractiveGrid-module__DgSReW__react-resizable-handle-n:after {
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.InteractiveGrid-module__DgSReW__react-resizable-handle-s:after {
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/*# sourceMappingURL=src_components_Grid_InteractiveGrid_module_css_bad6b30c._.single.css.map*/

@@ -1,0 +1,35 @@
+{
+  "name": "dobby",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "@types/three": "^0.182.0",
+    "framer-motion": "^12.26.2",
+    "gsap": "^3.14.2",
+    "lenis": "^1.3.17",
+    "lodash": "^4.17.21",
+    "next": "16.1.2",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-grid-layout": "^2.2.2",
+    "three": "^0.182.0",
+    "unicornstudio-react": "^2.0.1-1"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.23",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/react-grid-layout": "^1.3.6",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.2",
+    "typescript": "^5"
+  }
+}

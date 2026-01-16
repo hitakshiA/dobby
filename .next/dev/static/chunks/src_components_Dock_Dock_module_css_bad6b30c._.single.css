@@ -1,0 +1,93 @@
+/* [project]/src/components/Dock/Dock.module.css [app-client] (css) */
+.Dock-module__jY0-gq__dock-wrapper {
+  z-index: 1000;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  display: flex;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.Dock-module__jY0-gq__dock-container {
+  -webkit-backdrop-filter: blur(13px);
+  box-sizing: content-box;
+  background: #53535340;
+  border: 1px solid #ffffff2e;
+  border-radius: 16px;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 60px;
+  padding: 5px 8px;
+  display: flex;
+}
+
+.Dock-module__jY0-gq__dock-item {
+  vertical-align: bottom;
+  transform-origin: 50% 100%;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  margin: 0 8px;
+  list-style: none;
+  transition: all .2s;
+  display: flex;
+  position: relative;
+}
+
+.Dock-module__jY0-gq__dock-item:hover {
+  margin: 0 13px;
+}
+
+.Dock-module__jY0-gq__name {
+  color: #ffffffe6;
+  visibility: hidden;
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  background: #00000080;
+  border: 1px solid #ffffff1a;
+  border-radius: 5px;
+  padding: 4px 10px;
+  font-size: 12px;
+  transition: opacity .2s;
+  position: absolute;
+  top: -45px;
+}
+
+.Dock-module__jY0-gq__name:after {
+  content: "";
+  border-top: 5px solid #00000080;
+  border-left: 5px solid #0000;
+  border-right: 5px solid #0000;
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.Dock-module__jY0-gq__dock-item:hover .Dock-module__jY0-gq__name {
+  visibility: visible;
+  opacity: 1;
+}
+
+.Dock-module__jY0-gq__dock-icon {
+  transform-origin: 50% 100%;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  transition: transform .2s;
+  display: flex;
+}
+
+/*# sourceMappingURL=src_components_Dock_Dock_module_css_bad6b30c._.single.css.map*/
