@@ -1,12 +1,11 @@
-#  DOBBY - Your Free Crypto Intelligence Co-Pilot
+# 🦅 DOBBY - The Free Crypto Intelligence Terminal
 
-> *"Notion meets Bloomberg Terminal meets ChatGPT — but for crypto, and free"*
+> *"Notion meets Bloomberg Terminal — but for crypto, and free"*
 
-[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19-blue?style=flat-square&logo=react)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
-[![Hackathon](https://img.shields.io/badge/Hackathon-2026-purple?style=flat-square)](https://hackathon.com)
 
 ---
 
@@ -15,132 +14,149 @@
 - [Overview](#-overview)
 - [The Problem](#-the-problem)
 - [Our Solution](#-our-solution)
-- [Key Features](#-key-features)
+- [Widget Ecosystem](#-widget-ecosystem)
 - [Tech Stack](#-tech-stack)
-- [Architecture](#-architecture)
+- [API Architecture](#-api-architecture)
 - [Getting Started](#-getting-started)
-- [API Integration](#-api-integration)
-- [Project Structure](#-project-structure)
-- [Roadmap](#-roadmap)
-- [Demo](#-demo)
 - [Team](#-team)
-- [Contributing](#-contributing)
-- [License](#-license)
 
 ---
 
 ## 🎯 Overview
 
-**DOBBY** is a free, modular crypto intelligence dashboard that unifies 10+ essential tools into a single, customizable command center. Built entirely on free APIs, DOBBY democratizes access to institutional-grade crypto analytics—eliminating the $200+/month subscription barrier.
+ **DOBBY** is a modular, high-performance crypto dashboard that unifies the entire ecosystem into a single, customizable grid. It replaces paid institutional tools with a free, open-source alternative powered by 15+ industry-leading public APIs.
 
-### 🏆 Hackathon Submission
-
-**Track:** Web3 / Fintech Innovation  
-**Challenge:** Democratizing Crypto Access  
-**Date:** January 2026
-
-**Team:**
-- **Akash Deep** - Full-stack Developer | SRM Institute of Science and Technology
-- **Hitakshi Arora** - UI/UX Designer & Frontend Developer | SRM Institute of Science and Technology
+Designed with a **"Degen-Futuristic"** aesthetic, Dobby provides real-time data, security scanning, and ecosystem metrics in a drag-and-drop interface.
 
 ---
 
 ## ❌ The Problem
 
-### Current Crypto Tool Landscape is Broken
-
-Crypto traders and investors face three critical challenges:
-
-1. **Fragmentation Crisis**
-   - Users juggle **10+ different platforms** daily
-   - DexScreener for prices, DeFiLlama for yields, GoPlus for security, Twitter for alpha, Zerion for portfolios
-   - Constant tab-switching causes **missed opportunities** and security blind spots
-
-2. **Cost Barrier**
-   - Professional tools cost **$200+/month** in subscriptions
-   - Nansen: $150/mo | Dune Analytics: $99/mo | DexTools Pro: $49/mo
-   - Excludes 88% of crypto users who can't afford multiple subscriptions
-
-3. **One-Size-Fits-All Problem**
-   - Generic dashboards don't serve diverse user needs
-   - Complete beginners ≠ Meme coin hunters ≠ DeFi farmers ≠ Institutional traders
-   - Fixed layouts force irrelevant features on everyone
-
-**The Pain:** Users spend more time navigating tools than making informed decisions.
+Crypto traders and researchers suffer from **"Tab Fatigue"**:
+1.  **Fragmentation**: Checking prices on DexScreener, yields on DeFiLlama, security on GoPlus, and news on CryptoPanic requires constant context switching.
+2.  **Cost**: Professional terminals (Nansen, Bloomberg, Glassnode) cost **$200-$20,000/month**.
+3.  **Latency**: Generic dashboards are often slow and lack real-time WebSocket capabilities.
 
 ---
 
-## ✅ Our Solution
+## ✅ Our Solution: The Widget Center
 
-### DOBBY: Modular + AI-Powered + Free
+DOBBY provides a focused command center with **40+ specialized widgets** organized into four key pillars.
 
-DOBBY solves fragmentation, cost, and customization problems through three core innovations:
+### 📊 Markets
+*Real-time price action and macro trends.*
+-   **Market Terminal**: Professional candlestick charts (TradingView/Lightweight Charts) with volume histograms.
+-   **Market Dominance**: Live BTC vs ETH vs SOL vs Stablecoin market share.
+-   **Order Book Depth**: Real-time Bid/Ask visualizer for BTC, ETH, SOL (Binance WebSocket).
+-   **Funding Rates**: Live futures funding rates and countdowns.
+-   **Stablecoin Monitor**: Peg tracking for USDT, USDC, DAI.
+-   **Open Interest**: Live derivatives open interest data.
 
-#### 1. 🧩 **Modular Architecture**
-- **62+ draggable tiles** across 9 categories
-- Users build **their own** perfect dashboard
-- Beginners use 3 tiles, pro traders use 20+ tiles
-- Save and switch between layout presets (e.g., "Degen Mode" vs "Chill Mode")
+### 🌐 Ecosystem
+*Chain-specific metrics and protocol health.*
+-   **Solana Scope**: TPS, Slot Height, and Network Status via Helius RPC.
+-   **L2 Beat**: TVL rankings for Arbitrum, Optimism, Base, and ZK-Rollups.
+-   **DAO Treasuries**: Top protocol holdings and liquid assets.
+-   **NFT Blue Chips**: Floor price ticker for Punks, Apes, and Pudgy, plus Magic Eden top lists.
+-   **Gas Stations**: Live gas fees for Ethereum and Base L2.
+-   **Osmosis Zone**: IBC liquidity and volume metrics.
 
-#### 2. 🤖 **Contextual AI Agents**
-- AI agents **embedded inside each tile** (not a separate chatbot)
-- Direct access to tile data for contextual intelligence
-- Natural language queries: *"Is this token safe?"* → Instant 30-point security scan
-- Action-capable: Execute swaps, set alerts, revoke approvals
+### 🛡️ Security
+*Risk intelligence and safety scanners.*
+-   **GoPlus Scanner**: Interactive contract scanner for honeypots and taxes.
+-   **DeFi Hacks**: Live feed of recent protocol exploits and flash loan attacks.
+-   **Token Unlocks**: Tracking upcoming cliff unlocks and vesting schedules.
+-   **RugCheck Gateway**: Direct integration for Solana token safety scores.
 
-#### 3. 💰 **100% Free Forever**
-- Built entirely on **free APIs** (DeFiLlama, GoPlus, Jupiter, GeckoTerminal)
-- No paywalls, no premium tiers, no "freemium" traps
-- Sustainable through smart caching and rate limit optimization
-
----
-
-## 🚀 Key Features
-
-### For Every User Persona
-
-#### 🌱 **Complete Beginners**
-- Simple portfolio view with big, clear numbers
-- Guided swap assistant with step-by-step help
-- Educational tooltips on hover
-- Automatic safety checks before every action
-- "Are you sure?" warnings for risky operations
-
-#### 🎯 **Meme Coin Hunters (Degens)**
-- **Pump.fun live feed** with real-time token launches
-- **One-Click Safe Ape:** See → Auto-scan → Buy in <10 seconds
-- Automatic rug detection (honeypot, liquidity lock, ownership checks)
-- Jupiter swap integration for Solana
-- Whale transaction alerts
-
-#### 🌾 **DeFi Yield Farmers**
-- **Yield Opportunity Matrix** across 5000+ pools
-- Compare APY, TVL, risk score, and IL instantly
-- Position health monitoring (liquidation warnings)
-- Impermanent loss calculator
-- Stablecoin depeg alerts
-
-#### 📱 **Social Alpha Hunters**
-- Farcaster crypto feed integration
-- Twitter/CT alpha monitor
-- Whale wallet tracking with context (*"This wallet bought PEPE before 100x"*)
-- Token mention sentiment analysis
-- Cast directly to Farcaster from DOBBY
-
-#### 💎 **Long-Term Investors (HODLers)**
-- Cost basis tracking for taxes
-- Governance proposal notifications
-- **Airdrop eligibility checker** (auto-scans wallet for qualification)
-- Token unlock calendar
-- Portfolio rebalancing suggestions
+### 🦍 Degen
+*Alpha hunting and high-risk opportunities.*
+-   **Pump.fun Terminal**: Live feed of new bonding curve launches.
+-   **Birdeye Radar**: Trending tokens on Solana.
+-   **New Pairs**: Fresh liquidity pools detected on GeckoTerminal.
+-   **Polymarket Odds**: Prediction market sentiment and volume.
 
 ---
 
 ## 🔧 Tech Stack
 
-### Frontend
-- **Framework:** Next.js 15 (App Router)
-- **Language:** TypeScript 5.0
-- **UI Library:** React 19
-- **Styling:** Tailwind CSS 4.0
-- **State Management:**
+Built for speed, modularity, and aesthetics.
+
+### Core Framework
+-   **Next.js 16**: Utilizing the latest App Router and Server Actions.
+-   **Turbopack**: Fast incremental compilation.
+-   **React 19**: leveraging concurrent features for smooth UI updates.
+-   **TypeScript**: Strict type safety across the entire codebase.
+
+### Frontend Engineering
+-   **CSS Modules**: Zero-runtime overhead styling with a custom "Glassmorphism" design system.
+-   **React Grid Layout**: Robust drag-and-drop grid engine for customizable layouts.
+-   **Framer Motion**: Cinematic animations, layout transitions, and micro-interactions.
+-   **Lightweight Charts**: High-performance financial charting engine (Canvas-based).
+
+### Real-Time Infrastructure
+-   **WebSockets**: Custom hooks for live streaming data (Binance, Mempool).
+-   **Server-Side Proxies**: Next.js API Routes act as middleware to secure keys and handle CORS for 15+ external APIs.
+-   **SWR / React Query**: Smart caching and revalidation strategies to respect API rate limits.
+
+---
+
+## 🔌 API Architecture
+
+DOBBY is "API Agnostic" but effectively integrated with the best free tiers in crypto:
+
+| Provider | Purpose |
+| :--- | :--- |
+| **Helius** | Solana RPC, TPS, Network Status |
+| **Jupiter** | Token Swaps, Price Quotes (Aggregator V6) |
+| **Birdeye** | Verified Token Trends, Price Data |
+| **DeFiLlama** | TVL, Yields, Stablecoins, Hacks, Treasuries |
+| **CoinGecko** | Global Market Data, NFT Floors, Metadata |
+| **GoPlus** | Security Scanning, Honeypot Detection |
+| **Mempool.space** | Bitcoin Blocks, Fee Estimates (WebSocket) |
+| **Binance** | CEX Market Data, Order Books (WebSocket) |
+| **Midgard** | Thorchain/Native Swap Stats |
+| **Magic Eden** | NFT Collections Data |
+| **CryptoPanic** | News Aggregation |
+
+---
+
+## 🚀 Getting Started
+
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/yourusername/dobby.git
+    cd dobby
+    ```
+
+2.  **Install Dependencies**
+    ```bash
+    npm install
+    ```
+
+3.  **Environment Setup**
+    Create a `.env.local` file with your API keys (optional for some, required for others like Helius/Birdeye):
+    ```env
+    NEXT_PUBLIC_HELIUS_API_KEY=your_key_here
+    NEXT_PUBLIC_BIRDEYE_API_KEY=your_key_here
+    ```
+
+4.  **Run Development Server**
+    ```bash
+    npm run dev
+    ```
+
+5.  **Open Dashboard**
+    Navigate to `http://localhost:3000` to launch the terminal.
+
+---
+
+## � Team
+
+**Hackathon Submission 2026**
+
+-   **Akash Deep** - Full Stack Engineer
+-   **Hitakshi Arora** - UI/UX Designer & Frontend Developer
+
+---
+
+*Power to the Players. Controlled by Dobby.* 🦅
