@@ -1,0 +1,67 @@
+[
+  {
+    "name": "FearGreed",
+    "status": "PASS",
+    "code": 200
+  },
+  {
+    "name": "BinanceDepth",
+    "status": "PASS",
+    "code": 200
+  },
+  {
+    "name": "BinanceFunding",
+    "status": "PASS",
+    "code": 200
+  },
+  {
+    "name": "CoinGeckoDominance",
+    "status": "PASS",
+    "code": 200
+  },
+  {
+    "name": "CoinGeckoTrending",
+    "status": "PASS",
+    "code": 200
+  },
+  {
+    "name": "DeFiLlamaHacks",
+    "status": "PASS",
+    "code": 200
+  },
+  {
+    "name": "DeFiLlamaYields",
+    "status": "PASS",
+    "code": 200
+  },
+  {
+    "name": "DeFiLlamaStablecoins",
+    "status": "PASS",
+    "code": 200
+  },
+  {
+    "name": "MempoolSpace",
+    "status": "PASS",
+    "code": 200
+  },
+  {
+    "name": "Midgard",
+    "status": "ERROR",
+    "error": "fetch failed"
+  },
+  {
+    "name": "Osmosis",
+    "status": "ERROR",
+    "error": "fetch failed"
+  },
+  {
+    "name": "GoPlus",
+    "status": "PASS",
+    "code": 200
+  },
+  {
+    "name": "Snapshot",
+    "status": "PASS",
+    "code": 200
+  }
+]

@@ -130,7 +130,7 @@ export function MempoolWidget({ width = 200, height = 200 }: { width?: number; h
         );
     }
 
-    if (!data) return (
+    if (blocks.length === 0 && fees.fastest === 0) return (
         <div style={{ ...baseStyle, alignItems: 'center', justifyContent: 'center' }}>
             <div style={{ fontSize: '9px', color: THEME.textDim }}>NO PEERS</div>
         </div>
@@ -156,7 +156,7 @@ export function MempoolWidget({ width = 200, height = 200 }: { width?: number; h
             {/* Main Metric (Fees) */}
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                 <div style={{ fontSize: isLarge ? '56px' : '42px', fontWeight: 'bold', lineHeight: 1, color: THEME.orange }}>
-                    {data.fees.fastestFee}
+                    {fees.fastest}
                 </div>
                 <div style={{ fontSize: '10px', color: THEME.textDim, marginTop: '4px' }}>sat/vB</div>
             </div>
@@ -165,13 +165,13 @@ export function MempoolWidget({ width = 200, height = 200 }: { width?: number; h
             <div style={{ marginTop: 'auto', paddingTop: '10px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
                     <div style={{ fontSize: '10px', color: THEME.textDim }}>Height</div>
-                    <div style={{ fontSize: '10px', fontWeight: 'bold' }}>{data.height.toLocaleString()}</div>
+                    <div style={{ fontSize: '10px', fontWeight: 'bold' }}>{blocks[0]?.height?.toLocaleString() ?? '—'}</div>
                 </div>
-                {isLarge && (
+                {isLarge && blocks[0] && (
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <div style={{ fontSize: '10px', color: THEME.textDim }}>Diff Adj</div>
-                        <div style={{ fontSize: '10px', fontWeight: 'bold', color: data.difficulty.change > 0 ? THEME.neon : THEME.text }}>
-                            {data.difficulty.change > 0 ? '+' : ''}{data.difficulty.change.toFixed(1)}%
+                        <div style={{ fontSize: '10px', color: THEME.textDim }}>TXs</div>
+                        <div style={{ fontSize: '10px', fontWeight: 'bold' }}>
+                            {blocks[0].tx_count?.toLocaleString() ?? '—'}
                         </div>
                     </div>
                 )}

@@ -1,0 +1,317 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background: rgba(9, 9, 11, 0.6);
+    /* Zinc-950/60 */
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
+    overflow: hidden;
+    color: #e4e4e7;
+    /* Zinc-200 */
+    font-family: 'SF Mono', 'Roboto Mono', monospace;
+}
+
+.header {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    gap: 8px;
+    padding: 8px;
+    min-height: 0;
+    /* Prevent flex collapse */
+}
+
+/* --- Layout Areas --- */
+/*
+ [ Chart ] [ Stats ]
+ [ Chart ] [ Stats ]
+ [ Trades] [ Meter ]
+*/
+
+.chartArea {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.statsArea {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 0;
+}
+
+.tradesArea {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.meterArea {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Components --- */
+
+/* Coin Selector */
+.coinSelector {
+    display: flex;
+    gap: 8px;
+}
+
+.coinBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: #a1a1aa;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.coinBtn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+
+.coinBtnActive {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+.coinDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+/* Price Display */
+.priceDisplay {
+    text-align: right;
+}
+
+.priceValue {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.priceChange {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* Stats Cards */
+.statsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    flex: 0 0 auto;
+}
+
+.statCard {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.statLabel {
+    font-size: 9px;
+    color: #71717a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.statValue {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fafafa;
+}
+
+.statSub {
+    font-size: 9px;
+    color: #52525b;
+}
+
+/* Order Book (Visual) */
+.orderBook {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.sectionTitle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    color: #71717a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.depthVis {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2px;
+}
+
+.depthBar {
+    flex: 1;
+    border-radius: 2px 2px 0 0;
+    opacity: 0.6;
+}
+
+/* Trade List */
+.tradeHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 8px;
+    margin-bottom: 6px;
+    font-size: 9px;
+    color: #52525b;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.tradeScroll {
+    flex: 1;
+    overflow-y: hidden;
+    position: relative;
+    /* Mask for fade out at bottom */
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+.tradeRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 3px 8px;
+    font-size: 11px;
+    border-radius: 4px;
+}
+
+.tradeRow:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.textRight {
+    text-align: right;
+}
+
+.textGreen {
+    color: #4ade80;
+}
+
+.textRed {
+    color: #ef4444;
+}
+
+.textZinc {
+    color: #52525b;
+}
+
+.textWhite {
+    color: #e4e4e7;
+}
+
+/* Chart Overlay */
+.chartOverlay {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+}
+
+.chartBadge {
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    color: #a1a1aa;
+}
+
+/* Animations */
+@keyframes pulseLive {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+.liveDot {
+    width: 6px;
+    height: 6px;
+    background: #10b981;
+    border-radius: 50%;
+    animation: pulseLive 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    box-shadow: 0 0 8px #10b981;
+}

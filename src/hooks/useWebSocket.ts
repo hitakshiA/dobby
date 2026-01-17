@@ -23,6 +23,7 @@ export function useWebSocket(url: string, options: WebSocketOptions = {}) {
 
     const [isConnected, setIsConnected] = useState(false);
     const [error, setError] = useState<Event | null>(null);
+    const [lastMessage, setLastMessage] = useState<MessageEvent | null>(null);
     const wsRef = useRef<WebSocket | null>(null);
     const reconnectCount = useRef(0);
     const reconnectTimer = useRef<NodeJS.Timeout | null>(null);
@@ -53,6 +54,7 @@ export function useWebSocket(url: string, options: WebSocketOptions = {}) {
             };
 
             ws.onmessage = (event) => {
+                setLastMessage(event);
                 if (onMessage) onMessage(event);
             };
 
@@ -85,5 +87,5 @@ export function useWebSocket(url: string, options: WebSocketOptions = {}) {
         }
     }, []);
 
-    return { isConnected, error, sendMessage };
+    return { isConnected, error, sendMessage, lastMessage };
 }

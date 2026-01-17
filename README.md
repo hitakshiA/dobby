@@ -1,10 +1,11 @@
-# 🦅 DOBBY - The Free Crypto Intelligence Terminal
+# 🦅 DOBBY - The Agentic Crypto Intelligence OS
 
-> *"Notion meets Bloomberg Terminal — but for crypto, and free"*
+> *"Not just a dashboard — an intelligent partner powered by OnDemand AI"*
 
 [![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19-blue?style=flat-square&logo=react)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Auth0](https://img.shields.io/badge/Auth0-Secured-orange?style=flat-square&logo=auth0)](https://auth0.com/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
 ---
@@ -12,8 +13,8 @@
 ## 📋 Table of Contents
 
 - [Overview](#-overview)
-- [The Problem](#-the-problem)
-- [Our Solution](#-our-solution)
+- [Key Features](#-key-features)
+- [Agentic AI System](#-agentic-ai-system)
 - [Widget Ecosystem](#-widget-ecosystem)
 - [Tech Stack](#-tech-stack)
 - [API Architecture](#-api-architecture)
@@ -24,138 +25,146 @@
 
 ## 🎯 Overview
 
- **DOBBY** is a modular, high-performance crypto dashboard that unifies the entire ecosystem into a single, customizable grid. It replaces paid institutional tools with a free, open-source alternative powered by 15+ industry-leading public APIs.
+**DOBBY** is a modular, agentic crypto operating system that unifies the entire ecosystem into a single, intelligent interface. It combines 40+ real-time data widgets with an AI agent powered by **OnDemand AI** — allowing users to link any widget to the AI and ask context-aware questions.
 
-Designed with a **"Degen-Futuristic"** aesthetic, Dobby provides real-time data, security scanning, and ecosystem metrics in a drag-and-drop interface.
-
----
-
-## ❌ The Problem
-
-Crypto traders and researchers suffer from **"Tab Fatigue"**:
-1.  **Fragmentation**: Checking prices on DexScreener, yields on DeFiLlama, security on GoPlus, and news on CryptoPanic requires constant context switching.
-2.  **Cost**: Professional terminals (Nansen, Bloomberg, Glassnode) cost **$200-$20,000/month**.
-3.  **Latency**: Generic dashboards are often slow and lack real-time WebSocket capabilities.
+Designed with a **"Degen-Futuristic"** aesthetic, Dobby transforms static dashboards into active, intelligent partners.
 
 ---
 
-## ✅ Our Solution: The Widget Center
+## ✨ Key Features
 
-DOBBY provides a focused command center with **40+ specialized widgets** organized into four key pillars.
+### 🔐 Auth0 Authentication
+Secure login flow with Auth0. Click `[ ENTER ]` to authenticate before accessing the dashboard.
+
+### 🤖 Agentic AI Chat
+The central AI Agent can be linked to any widget on the dashboard. When linked, the agent gains access to that widget's data and can answer complex, synthesized questions.
+
+### 👁️ Vision Op (Multimodal)
+Drag and drop any screenshot into the Vision Agent to get instant chart pattern analysis, UI feedback, or data extraction.
+
+---
+
+## 🧠 Agentic AI System
+
+DOBBY's AI is not just a chatbot — it's a **context-aware agent** that adapts based on linked widgets.
+
+### The 6 Agent Personas
+
+| Persona | Linked Widgets | Capability |
+| :--- | :--- | :--- |
+| **🕵️ The Auditor** | Security Audit, DeFi Hacks, GoPlus | Smart contract vetting & exploit detection |
+| **🌾 The Yield Hunter** | Top Yields, Gas Tracker, L2 TVL | Net yield optimization across chains |
+| **🧠 The Strategist** | Market Dominance, Funding Rates, OI | Macro analysis & leverage traps |
+| **🔫 The Sniper** | New Tokens, Solana Speed, DexScreener | High-speed Solana opportunity detection |
+| **🎨 The Curator** | Magic Eden, Blue Chips, NFT Trending | NFT sentiment & retention analysis |
+| **👁️ The Visionary** | Vision Op (Image Input) | Multimodal chart & screenshot analysis |
+
+### How It Works
+1. Add widgets to your dashboard via the **Widget Center**.
+2. Click the **🔗 Link** icon on any widget to connect it to the AI Agent.
+3. Ask the agent a question — it will use all linked widgets as context.
+
+---
+
+## 🔧 Widget Ecosystem
 
 ### 📊 Markets
-*Real-time price action and macro trends.*
--   **Market Terminal**: Professional candlestick charts (TradingView/Lightweight Charts) with volume histograms.
--   **Market Dominance**: Live BTC vs ETH vs SOL vs Stablecoin market share.
--   **Order Book Depth**: Real-time Bid/Ask visualizer for BTC, ETH, SOL (Binance WebSocket).
--   **Funding Rates**: Live futures funding rates and countdowns.
--   **Stablecoin Monitor**: Peg tracking for USDT, USDC, DAI.
--   **Open Interest**: Live derivatives open interest data.
+- Market Terminal, Dominance, Order Book Depth, Funding Rates, Stablecoin Monitor, Open Interest
 
 ### 🌐 Ecosystem
-*Chain-specific metrics and protocol health.*
--   **Solana Scope**: TPS, Slot Height, and Network Status via Helius RPC.
--   **L2 Beat**: TVL rankings for Arbitrum, Optimism, Base, and ZK-Rollups.
--   **DAO Treasuries**: Top protocol holdings and liquid assets.
--   **NFT Blue Chips**: Floor price ticker for Punks, Apes, and Pudgy, plus Magic Eden top lists.
--   **Gas Stations**: Live gas fees for Ethereum and Base L2.
--   **Osmosis Zone**: IBC liquidity and volume metrics.
+- Solana Scope, L2 Beat, DAO Treasuries, NFT Blue Chips, Gas Stations, Osmosis Zone
 
 ### 🛡️ Security
-*Risk intelligence and safety scanners.*
--   **GoPlus Scanner**: Interactive contract scanner for honeypots and taxes.
--   **DeFi Hacks**: Live feed of recent protocol exploits and flash loan attacks.
--   **Token Unlocks**: Tracking upcoming cliff unlocks and vesting schedules.
--   **RugCheck Gateway**: Direct integration for Solana token safety scores.
+- GoPlus Scanner, DeFi Hacks, Token Unlocks, RugCheck Gateway
 
 ### 🦍 Degen
-*Alpha hunting and high-risk opportunities.*
--   **Pump.fun Terminal**: Live feed of new bonding curve launches.
--   **Birdeye Radar**: Trending tokens on Solana.
--   **New Pairs**: Fresh liquidity pools detected on GeckoTerminal.
--   **Polymarket Odds**: Prediction market sentiment and volume.
+- Pump.fun Terminal, Birdeye Radar, New Pairs, Polymarket Odds
 
 ---
 
 ## 🔧 Tech Stack
 
-Built for speed, modularity, and aesthetics.
-
 ### Core Framework
--   **Next.js 16**: Utilizing the latest App Router and Server Actions.
--   **Turbopack**: Fast incremental compilation.
--   **React 19**: leveraging concurrent features for smooth UI updates.
--   **TypeScript**: Strict type safety across the entire codebase.
+- **Next.js 16**: App Router, Server Actions, Turbopack
+- **React 19**: Concurrent features for smooth UI
+- **TypeScript**: Strict type safety
 
-### Frontend Engineering
--   **CSS Modules**: Zero-runtime overhead styling with a custom "Glassmorphism" design system.
--   **React Grid Layout**: Robust drag-and-drop grid engine for customizable layouts.
--   **Framer Motion**: Cinematic animations, layout transitions, and micro-interactions.
--   **Lightweight Charts**: High-performance financial charting engine (Canvas-based).
+### AI & Auth
+- **OnDemand AI**: Plugin-based agentic chat system
+- **Auth0**: Secure authentication with `proxy.ts` (Next.js 16)
 
-### Real-Time Infrastructure
--   **WebSockets**: Custom hooks for live streaming data (Binance, Mempool).
--   **Server-Side Proxies**: Next.js API Routes act as middleware to secure keys and handle CORS for 15+ external APIs.
--   **SWR / React Query**: Smart caching and revalidation strategies to respect API rate limits.
+### Frontend
+- **CSS Modules**: Glassmorphism design system
+- **React Grid Layout**: Drag-and-drop widget grid
+- **Framer Motion**: Cinematic animations
+
+### Real-Time
+- **WebSockets**: Live streaming (Binance, Mempool)
+- **Server Proxies**: API key security via Next.js routes
 
 ---
 
 ## 🔌 API Architecture
 
-DOBBY is "API Agnostic" but effectively integrated with the best free tiers in crypto:
-
 | Provider | Purpose |
 | :--- | :--- |
+| **OnDemand AI** | Agentic chat, tool orchestration |
 | **Helius** | Solana RPC, TPS, Network Status |
-| **Jupiter** | Token Swaps, Price Quotes (Aggregator V6) |
-| **Birdeye** | Verified Token Trends, Price Data |
-| **DeFiLlama** | TVL, Yields, Stablecoins, Hacks, Treasuries |
-| **CoinGecko** | Global Market Data, NFT Floors, Metadata |
-| **GoPlus** | Security Scanning, Honeypot Detection |
-| **Mempool.space** | Bitcoin Blocks, Fee Estimates (WebSocket) |
-| **Binance** | CEX Market Data, Order Books (WebSocket) |
-| **Midgard** | Thorchain/Native Swap Stats |
-| **Magic Eden** | NFT Collections Data |
-| **CryptoPanic** | News Aggregation |
+| **Jupiter** | Token Swaps, Price Quotes |
+| **Birdeye** | Verified Token Trends |
+| **DeFiLlama** | TVL, Yields, Hacks, Treasuries |
+| **CoinGecko** | Global Market Data, NFT Floors |
+| **GoPlus** | Security Scanning |
+| **Binance** | CEX Market Data (WebSocket) |
+| **Auth0** | User Authentication |
 
 ---
 
 ## 🚀 Getting Started
 
-1.  **Clone the repository**
-    ```bash
-    git clone https://github.com/yourusername/dobby.git
-    cd dobby
-    ```
+### 1. Clone & Install
+```bash
+git clone https://github.com/yourusername/dobby.git
+cd dobby
+npm install
+```
 
-2.  **Install Dependencies**
-    ```bash
-    npm install
-    ```
+### 2. Environment Setup
+Create a `.env.local` file:
+```env
+# OnDemand AI
+NEXT_PUBLIC_ONDEMAND_API_KEY=your_key_here
 
-3.  **Environment Setup**
-    Create a `.env.local` file with your API keys (optional for some, required for others like Helius/Birdeye):
-    ```env
-    NEXT_PUBLIC_HELIUS_API_KEY=your_key_here
-    NEXT_PUBLIC_BIRDEYE_API_KEY=your_key_here
-    ```
+# Solana
+NEXT_PUBLIC_HELIUS_API_KEY=your_key_here
 
-4.  **Run Development Server**
-    ```bash
-    npm run dev
-    ```
+# Auth0 (Required)
+AUTH0_SECRET=use_openssl_rand_hex_32
+AUTH0_DOMAIN=your_domain.auth0.com
+AUTH0_CLIENT_ID=your_client_id
+AUTH0_CLIENT_SECRET=your_client_secret
+APP_BASE_URL=http://localhost:3000
+```
 
-5.  **Open Dashboard**
-    Navigate to `http://localhost:3000` to launch the terminal.
+### 3. Configure Auth0
+In your Auth0 Dashboard:
+- **Allowed Callback URLs:** `http://localhost:3000/auth/callback`
+- **Allowed Logout URLs:** `http://localhost:3000`
+
+### 4. Run
+```bash
+npm run dev
+```
+Navigate to `http://localhost:3000` and click `[ ENTER ]` to begin.
 
 ---
 
-## � Team
+## 👥 Team
 
-**Hackathon Submission 2026**
+**OnDemand AI Hackathon 2026**
 
--   **Akash Deep** - Full Stack Engineer
--   **Hitakshi Arora** - UI/UX Designer & Frontend Developer
+- **Akash Deep** - Full Stack Engineer
+- **Hitakshi Arora** - UI/UX Designer & Frontend Developer
 
 ---
 

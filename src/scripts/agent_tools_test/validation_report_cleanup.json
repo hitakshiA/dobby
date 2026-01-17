@@ -1,0 +1,37 @@
+[
+  {
+    "name": "DeribitOI",
+    "status": "PASS",
+    "code": 200
+  },
+  {
+    "name": "GeckoTerminal",
+    "status": "PASS",
+    "code": 200
+  },
+  {
+    "name": "DeFiLlamaL2",
+    "status": "PASS",
+    "code": 200
+  },
+  {
+    "name": "DeFiLlamaTreasury",
+    "status": "PASS",
+    "code": 200
+  },
+  {
+    "name": "TokenUnlocks",
+    "status": "ERROR",
+    "error": "fetch failed"
+  },
+  {
+    "name": "MidgardRetry",
+    "status": "PASS",
+    "code": 200
+  },
+  {
+    "name": "OsmosisRetry",
+    "status": "PASS",
+    "code": 200
+  }
+]
